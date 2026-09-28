@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://babgdpedwx6kj"]
+
+[ext_resource type="Script" uid="uid://b6dj1j8arpub1" path="res://src/core/main/main.gd" id="1_6t2ow"]
+
+[node name="Main" type="Node" unique_id=697537597]
+process_mode = 3
+script = ExtResource("1_6t2ow")
+
+[node name="Systems" type="Node" parent="." unique_id=5890338]
+
+[node name="World" type="Node3D" parent="." unique_id=761289402]
+process_mode = 1
+
+[node name="WorldRoot" type="Node3D" parent="World" unique_id=1619263846]
+unique_name_in_owner = true
+
+[node name="EntityRoot" type="Node3D" parent="World" unique_id=485704591]
+unique_name_in_owner = true
+
+[node name="EffectRoot" type="Node3D" parent="World" unique_id=364746887]
+unique_name_in_owner = true
+
+[node name="HudLayer" type="CanvasLayer" parent="." unique_id=1647062769]
+process_mode = 1
+layer = 10
+
+[node name="HudRoot" type="Control" parent="HudLayer" unique_id=1599717484]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="MenuLayer" type="CanvasLayer" parent="." unique_id=1497049886]
+process_mode = 2
+layer = 20
+
+[node name="MenuRoot" type="Control" parent="MenuLayer" unique_id=443310237]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TransitionLayer" type="CanvasLayer" parent="." unique_id=999220271]
+process_mode = 3
+layer = 100
+
+[node name="TransitionRoot" type="Control" parent="TransitionLayer" unique_id=1138630212]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="DebugLayer" type="CanvasLayer" parent="." unique_id=1041392721]
+process_mode = 3
+layer = 128
+
+[node name="DebugRoot" type="Control" parent="DebugLayer" unique_id=1467730494]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+mouse_behavior_recursive = 1
+
+[node name="DebugTextOverlay" type="Control" parent="DebugLayer/DebugRoot" unique_id=102411043]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MarginContainer" type="MarginContainer" parent="DebugLayer/DebugRoot/DebugTextOverlay" unique_id=1307827207]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DebugLayer/DebugRoot/DebugTextOverlay/MarginContainer" unique_id=1441033979]
+layout_mode = 2
+
+[node name="FpsLabel" type="Label" parent="DebugLayer/DebugRoot/DebugTextOverlay/MarginContainer/VBoxContainer" unique_id=2139366725]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="VersionInfo" type="Label" parent="DebugLayer/DebugRoot/DebugTextOverlay/MarginContainer/VBoxContainer" unique_id=761611467]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="DebugInfo" type="Label" parent="DebugLayer/DebugRoot/DebugTextOverlay/MarginContainer/VBoxContainer" unique_id=799260483]
+unique_name_in_owner = true
+layout_mode = 2
