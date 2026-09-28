@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://bdomfhsbqxujo"]
+
+[ext_resource type="Script" uid="uid://cwlkmgmw1cgo2" path="res://src/core/scene/world.gd" id="1_ufmjq"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ufmjq"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_kvtob"]
+sky_material = SubResource("ProceduralSkyMaterial_ufmjq")
+
+[sub_resource type="Environment" id="Environment_0fwu5"]
+background_mode = 2
+sky = SubResource("Sky_kvtob")
+glow_enabled = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_rea15"]
+
+[node name="TestWorld" type="Node" unique_id=859927059]
+script = ExtResource("1_ufmjq")
+
+[node name="World" type="Node3D" parent="." unique_id=157599992]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="World" unique_id=1690899254]
+environment = SubResource("Environment_0fwu5")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="World" unique_id=1739228330]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 3, 0)
+shadow_enabled = true
+
+[node name="EntityRoot" type="Node3D" parent="World" unique_id=145860938]
+unique_name_in_owner = true
+
+[node name="Camera3D" type="Camera3D" parent="World/EntityRoot" unique_id=456439483]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 1, 2)
+current = true
+
+[node name="EffectRoot" type="Node3D" parent="World" unique_id=1651547711]
+unique_name_in_owner = true
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="World" unique_id=1473201713]
+mesh = SubResource("BoxMesh_rea15")

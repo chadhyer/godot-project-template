@@ -1,30 +1,29 @@
 [gd_scene format=3 uid="uid://babgdpedwx6kj"]
 
 [ext_resource type="Script" uid="uid://b6dj1j8arpub1" path="res://src/core/main/main.gd" id="1_6t2ow"]
+[ext_resource type="PackedScene" uid="uid://c2n7var11r0ia" path="res://src/core/scene/title/title.tscn" id="2_eijcj"]
+[ext_resource type="PackedScene" uid="uid://bdomfhsbqxujo" path="res://src/world/dev/test_world.tscn" id="3_tif62"]
+[ext_resource type="PackedScene" uid="uid://bm4ok4jul43h1" path="res://src/core/scene/menu/menu.tscn" id="3_yfg2f"]
+[ext_resource type="PackedScene" uid="uid://pb4le41yu4fu" path="res://src/debug/debug_text_overlay.tscn" id="4_5fl30"]
 
 [node name="Main" type="Node" unique_id=697537597]
 process_mode = 3
 script = ExtResource("1_6t2ow")
+title_scene = ExtResource("2_eijcj")
+menu_scene = ExtResource("3_yfg2f")
+test_world_scene = ExtResource("3_tif62")
 
 [node name="Systems" type="Node" parent="." unique_id=5890338]
 
-[node name="World" type="Node3D" parent="." unique_id=761289402]
+[node name="SceneHolder" type="Node" parent="." unique_id=581782274]
+unique_name_in_owner = true
 process_mode = 1
 
-[node name="WorldRoot" type="Node3D" parent="World" unique_id=1619263846]
-unique_name_in_owner = true
-
-[node name="EntityRoot" type="Node3D" parent="World" unique_id=485704591]
-unique_name_in_owner = true
-
-[node name="EffectRoot" type="Node3D" parent="World" unique_id=364746887]
-unique_name_in_owner = true
-
-[node name="HudLayer" type="CanvasLayer" parent="." unique_id=1647062769]
+[node name="UILayer" type="CanvasLayer" parent="." unique_id=1647062769]
 process_mode = 1
 layer = 10
 
-[node name="HudRoot" type="Control" parent="HudLayer" unique_id=1599717484]
+[node name="UIRoot" type="Control" parent="UILayer" unique_id=1599717484]
 unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 0
@@ -38,6 +37,7 @@ layer = 20
 
 [node name="MenuRoot" type="Control" parent="MenuLayer" unique_id=443310237]
 unique_name_in_owner = true
+process_mode = 3
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -61,34 +61,15 @@ layer = 128
 
 [node name="DebugRoot" type="Control" parent="DebugLayer" unique_id=1467730494]
 unique_name_in_owner = true
+process_mode = 3
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 mouse_behavior_recursive = 1
 
-[node name="DebugTextOverlay" type="Control" parent="DebugLayer/DebugRoot" unique_id=102411043]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="MarginContainer" type="MarginContainer" parent="DebugLayer/DebugRoot/DebugTextOverlay" unique_id=1307827207]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="DebugLayer/DebugRoot/DebugTextOverlay/MarginContainer" unique_id=1441033979]
-layout_mode = 2
-
-[node name="FpsLabel" type="Label" parent="DebugLayer/DebugRoot/DebugTextOverlay/MarginContainer/VBoxContainer" unique_id=2139366725]
-unique_name_in_owner = true
-layout_mode = 2
-
-[node name="VersionInfo" type="Label" parent="DebugLayer/DebugRoot/DebugTextOverlay/MarginContainer/VBoxContainer" unique_id=761611467]
-unique_name_in_owner = true
-layout_mode = 2
-
-[node name="DebugInfo" type="Label" parent="DebugLayer/DebugRoot/DebugTextOverlay/MarginContainer/VBoxContainer" unique_id=799260483]
-unique_name_in_owner = true
-layout_mode = 2
+[node name="DebugTextOverlay" parent="DebugLayer/DebugRoot" unique_id=841392895 instance=ExtResource("4_5fl30")]
+layout_mode = 1
